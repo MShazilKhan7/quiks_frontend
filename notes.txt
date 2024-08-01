@@ -1,0 +1,5 @@
+Header Fonts (e.g., "Discover", "Tranding podcasts"): These are often clean, sans-serif fonts like Roboto, Montserrat, or Helvetica Neue.
+
+Body Text (e.g., descriptions and details under each podcast): Often use legible and clean sans-serif fonts like Roboto, Open Sans, or Lato.
+
+Buttons and Labels: Usually use bold versions of the main body font to stand out, often the same family as the body text but in a bolder weight.
