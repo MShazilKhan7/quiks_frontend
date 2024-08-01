@@ -4,10 +4,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#1D4ED8", // Your custom primary color
-        secondary: "#9333EA", // Your custom secondary color
-        accent: "#F59E0B", // Your custom accent color
-        // Add more custom colors as needed
+        primary: "#F27E7E",
+        back: "#EBEBF2",
+        secondary: "#102973",
+        accent: "#F2798F",
+        light: "#7395D9"
       },
     },
   },
