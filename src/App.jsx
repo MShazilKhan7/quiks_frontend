@@ -1,23 +1,16 @@
 import "./App.css";
 import React, { useState } from "react";
 import "./index.css";
-import Sidebar from "./app/components/sidebar/Sidebar"
-import MainContainer from "./app/components/MainContainer";
+import Sidebar from "./app/components/sidebar/Sidebar";
+import MainContainer from "./app/components/RootLayout/RootLayout";
+import RootLayout from "./app/components/RootLayout/RootLayout";
+import AppRoutes from "./app/routes";
 
 function App() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-
   return (
-    <>
-      <div id="app">
-        <Sidebar isOpen={isSidebarOpen} onToggle={toggleSidebar}/>
-        <MainContainer isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar}/>
-      </div>
-    </>
+    <div id="app">
+      <AppRoutes />
+    </div>
   );
 }
 
