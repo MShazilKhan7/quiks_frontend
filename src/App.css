@@ -1,3 +1,80 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--primary-color);
+    font-family: var(--font-primary);
+}
+
+:root {
+    --primary-color: #F27E7E;
+    --back-color: #EBEBF2;
+    --secondary-color: #102973;
+    --accent: #F2798F;
+    --light: #7395D9;
+    --font-primary: 'Roboto', sans-serif;
+    --font-secondary: 'Montserrat', sans-serif;
+}
+
+/* Main Container */
+#main-container {
+    height: 100vh;
+    width: calc(100vw - 5rem);
+    float: right;
+    border-radius: 0.5rem;
+}
+/* #main-container.open {
+    width: calc(100vw - 5rem);
+}
+#main-container.close {
+    width: 100vw;
+} */
+
+/* Sidebar */
+#sidebar {
+    width: 5rem;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+#sidebar.open {
+    transform: translateX(0);
+}
+#sidebar.close {
+    transform: translateX(-100%);
+}
+#sidebar .toggle-btn.close {
+    margin-left: 1.5rem;
+}
+#sidebar .toggle-btn.open {
+    margin-left: 2.5rem;
+}
+#sidebar .toggle-btn {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    /* Show toggle button on small devices */
+    #sidebar .toggle-btn {
+        display: block;
+    }
+    #main-container {
+        width: 100vw;
+        border-radius: 0;
+    }
+}
+
+/* Header */
+#main-container #header {
+    border-bottom: 1px solid var(--primary-color);
+    height: 5rem;
+}
+#main-container #header #time {
+    font-size: 1.75rem;
+    font-family: var(--font-secondary);
+}

@@ -1,11 +1,24 @@
 import "./App.css";
-import React from "react";
+import React, { useState } from "react";
 import "./index.css";
+import Sidebar from "./app/components/sidebar/Sidebar"
+import MainContainer from "./app/components/MainContainer";
 
-import AppRoutes from "./app/routes";
-import NewComp from "./app/components/newComp";
 function App() {
-  return <div className="bg-blue-500 text-white p-4">Hello, Tailwind CSS!</div>;
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  return (
+    <>
+      <div id="app">
+        <Sidebar isOpen={isSidebarOpen} onToggle={toggleSidebar}/>
+        <MainContainer isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar}/>
+      </div>
+    </>
+  );
 }
 
 export default App;
