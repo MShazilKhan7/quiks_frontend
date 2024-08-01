@@ -56,7 +56,7 @@ export default function Header() {
         </div>
         <div className="flex-none hidden md:flex justify-end gap-6 min-w-[50px] ">
           <h2 className="hidden lg:flex font-semibold text-gray-800 items-center justify-center">
-            Hamza Bham
+            Shazil Khan
           </h2>
 
           <button
