@@ -22,8 +22,8 @@ export default function RootLayout() {
   return (
     <div className={`bg-primay w-screen flex h-screen justify-between `}>
       <div
-        className={`left-container absolute top-0 left-0 md:static h-full md:w-[6rem] transition-all duration-500 bg-back_secondary ${
-          isSidebarOpen ? "w-[6rem]" : "w-0"
+        className={`left-container md:px-4 absolute top-0 left-0 md:static h-full md:w-[6rem] transition-all duration-500 bg-back_secondary ${
+          isSidebarOpen ? "w-[6rem] px-4" : "w-0 px-0"
         }`}
       >
         <Sidebar isOpen={isSidebarOpen} onToggle={toggleSidebar} />
@@ -42,7 +42,7 @@ export default function RootLayout() {
         </button>
       </div>
       <div
-        className={`right-container w-full h-full md:rounded-l-[1rem] md:w-[calc(100%-5rem)] bg-back`}
+        className={`right-container shadow-md w-full h-full md:rounded-l-[1.3rem] md:w-[calc(100%-6rem)] bg-back`}
       >
         <Header />
         <Outlet />

@@ -18,8 +18,8 @@ export default function SidebarItem({
   return (
     <div
       onClick={handleClick}
-      className={`cursor-pointer p-2 rounded-xl ${
-        isActive ? "bg-focused_menu_bg" : ""
+      className={`cursor-pointer p-2 rounded-xl  ${
+        isActive ? "bg-focused_menu_bg shadow-md" : ""
       }`}
     >
       <div

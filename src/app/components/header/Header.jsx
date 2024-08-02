@@ -1,8 +1,29 @@
 import React, { useState } from "react";
 
 const formatDate = (date) => {
-  const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday",];
-  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec",];
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
 
   const day = days[date.getDay()];
   const dateNum = date.getDate();
@@ -41,7 +62,7 @@ export default function Header() {
             <p className="text-gray-600 -mt-2 text-sm">{dayDate}</p>
           </div>
         </div>
-        <div className="bg-primary max-w-[500px] min-w-[120px] flex-grow flex items-center justify-start lg:justify-end w-full shadow-md bg-white rounded-md">
+        <div className="max-w-[500px] min-w-[120px] flex-grow flex items-center justify-start lg:justify-end w-full shadow-md bg-white rounded-md">
           <input
             id="search-bar"
             name="search"
@@ -72,7 +93,10 @@ export default function Header() {
           <button className="hidden sm:flex h-11 w-11 flex-none items-center justify-center bg-greyaccent hover:bg-accent text-accent hover:text-white rounded-full shadow-md">
             <i className="fa-solid fa-heart"></i>
           </button>
-          <button title="notifications" className="hidden sm:flex h-11 w-11 flex-none items-center justify-center bg-greyaccent hover:bg-accent hover:text-white rounded-full shadow-md">
+          <button
+            title="notifications"
+            className="hidden sm:flex h-11 w-11 flex-none items-center justify-center bg-greyaccent hover:bg-accent hover:text-white rounded-full shadow-md"
+          >
             <i className="fa-regular fa-bell"></i>
           </button>
         </div>
@@ -108,7 +132,7 @@ export default function Header() {
               href="#"
               className="flex group items-center gap-x-2 px-5 pb-2 pt-1 box-shadow-md hover:bg-gray-50"
             >
-              <i className="fa-regular fa-heart"></i>
+              <i className="fa-regular fa-heart"></i> 
               <div class="flex-auto font-semibold text-gray-900">Wishlist</div>
             </a>
           </div>
