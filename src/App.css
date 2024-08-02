@@ -1,6 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 * {
     margin: 0;
@@ -16,6 +16,7 @@ body {
 :root {
     --primary-color: #F27E7E;
     --back-color: #EBEBF2;
+    --grey-accent: #e2e2e2;
     --secondary-color: #102973;
     --accent: #F2798F;
     --light: #7395D9;
@@ -64,11 +65,11 @@ body {
 }
 
 /* Header */
-#header {
+/* #header {
     border-bottom: 1px solid var(--primary-color);
     height: 5rem;
-}
-#time {
+} */
+#header #time {
     font-size: 1.95rem;
     font-family: var(--font-secondary);
 }
