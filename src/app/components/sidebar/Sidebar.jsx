@@ -1,31 +1,29 @@
 import React from "react";
 import SidebarItem from "./SidebarItem";
 import { navigation } from "../../constants/navigationMenusConfig";
+import { useState } from "react";
 
-export default function Sidebar(props) {
+export default function Sidebar({ isOpen, onToggle }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
     <nav
-      className={`h-full transition-all duration-300 bg-primary flex flex-col justify-between`}
+      className={`h-full overflow-hidden rounded-r-[0.5rem] md:rounded-r-[0] transition-all duration-300 bg-[#DBE0EA] flex flex-col justify-center `}
     >
-      <div>
-        {navigation.map((menu) => {
-          return <SidebarItem {...menu} />;
+      <div className="flex flex-col gap-4">
+        {navigation.map((menu, index) => {
+          return (
+            <SidebarItem
+              {...menu}
+              icon={menu.icon}
+              title={menu.title}
+              path={menu.path}
+              index={index}
+              isActive={index === activeIndex}
+              setActiveIndex={setActiveIndex}
+            />
+          );
         })}
-      </div>
-      <div className="relative">
-        <button
-          className={
-            "absolute md:hidden bottom-4 left-1/2 transform text-white w-8 h-8 flex items-center justify-center rounded-full shadow-lg toggle-btn close bg-accent"
-          }
-          onClick={props.onToggle}
-          aria-label="Toggle Sidebar"
-        >
-          {props.isOpen ? (
-            <i className="fas fa-arrow-left text-sm"></i>
-          ) : (
-            <i className="fas fa-arrow-right text-sm"></i>
-          )}
-        </button>
       </div>
     </nav>
   );

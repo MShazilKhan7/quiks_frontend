@@ -1,16 +1,24 @@
-  export const navigationRoutes = [
-    {
-      path: "/",
-      element: <>menu1</>,
-    },
-    {
-      path: "menu2",
-      element: <>menu2</>,
-    },
-    {
-      path: "menu3",
-      element: <>menu3</>,
-    },
-  ];
+export const navigationRoutes = [
+  {
+    path: "/",
+    element: <>discover</>,
+  },
+  {
+    path: "search",
+    element: <>search</>,
+  },
+  {
+    path: "categories",
+    element: <>categories</>,
+  },
+  {
+    path: "profile",
+    element: <>categories</>,
+  },
+  {
+    path: "settings",
+    element: <>categories</>,
+  },
+];
 
-  export default navigationRoutes;
+export default navigationRoutes;
