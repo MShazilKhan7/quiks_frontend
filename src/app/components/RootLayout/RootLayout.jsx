@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { Outlet } from "react-router-dom";
 import Header from "../header/Header";
 import Sidebar from "../sidebar/Sidebar";
-import { Outlet } from "react-router-dom";
+import PrimaryCards from '../primaryCard/PrimaryCards'
 
 export default function RootLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -45,6 +46,17 @@ export default function RootLayout() {
         className={`right-container shadow-md w-full h-full md:rounded-l-[1.3rem] md:w-[calc(100%-6rem)] bg-back`}
       >
         <Header />
+
+        <div className="w-full p-2 py-4 lg:px-8 px-5 gap-5 mx-auto">
+          <div className="grid lg:flex gap-5">
+            <PrimaryCards />
+            {/* Audio Player - component will be made */}
+            <div className="bg-primary flex flex-auto order-1 lg:order-2 rounded-md shadow-lg md:h-auto h-[200px]">
+              
+            </div>
+          </div>
+        </div>
+
         <Outlet />
       </div>
     </div>
