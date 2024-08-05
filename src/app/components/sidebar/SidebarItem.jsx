@@ -27,8 +27,8 @@ export default function SidebarItem({
           isActive ? "text-focused_menu" : ""
         }`}
       >
-        <div className="text-[24px] font-bold">{icon}</div>
-        <p className="text-[12px]">{title}</p>
+        <div className="text-[24px] font-bold text-secondary">{icon}</div>
+        <p className="text-[12px] text-secondary">{title}</p>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const formatDate = (date) => {
   const days = [
@@ -40,10 +40,27 @@ const formatDate = (date) => {
 
 export default function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   function toggleAccountDropdown() {
     setIsDropdownOpen(!isDropdownOpen);
   }
+
+  const handleClickOutside = (event) => {
+    if((event.target == document.querySelector(`.profile-icon-img`))) {
+      return;
+    }
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsDropdownOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   const now = new Date();
   const { time, dayDate } = formatDate(now);
@@ -102,7 +119,7 @@ export default function Header() {
         </div>
 
         {/* Mobile Profile */}
-        <div className="flex-none flex md:hidden justify-end gap-4 min-w-[50px] ">
+        <div className="flex-none flex md:hidden justify-end gap-4 min-w-[50px] rounded-full">
           <button
             id="profile-icon"
             className="shadow-lg h-11 w-11 rounded-full"
@@ -111,10 +128,11 @@ export default function Header() {
             <img
               alt="profile"
               src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-              className="h-11 w-11 rounded-full"
+              className="h-11 w-11 rounded-full profile-icon-img"
             />
           </button>
           <div
+            ref={dropdownRef}
             class={`absolute rounded-lg text-sm leading-6 top-[4.5rem] right-3 bg-white shadow-md ${
               isDropdownOpen ? "block" : "hidden"
             }`}
