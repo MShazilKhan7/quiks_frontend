@@ -86,3 +86,7 @@ body {
 .book-primary-card:hover .menu {
     color: rgb(128, 128, 128);
 }
+
+.categories::-webkit-scrollbar{
+    display: none;
+}

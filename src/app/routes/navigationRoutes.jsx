@@ -1,7 +1,8 @@
+import Discover from "../components/discover/Discover";
 export const navigationRoutes = [
   {
     path: "/",
-    element: <>discover</>,
+    element: <Discover />,
   },
   {
     path: "search",

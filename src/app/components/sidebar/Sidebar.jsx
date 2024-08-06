@@ -8,7 +8,7 @@ export default function Sidebar({ isOpen, onToggle }) {
 
   return (
     <nav
-      className={`h-full overflow-hidden rounded-r-[0.5rem] md:rounded-r-[0] transition-all duration-300 bg-[#DBE0EA] flex flex-col justify-center `}
+      className={`h-full overflow-hidden z-10 rounded-r-[0.5rem] md:rounded-r-[0] transition-all duration-300 bg-[#DBE0EA] flex flex-col justify-center `}
     >
       <div className="flex flex-col gap-4">
         {navigation.map((menu, index) => {
