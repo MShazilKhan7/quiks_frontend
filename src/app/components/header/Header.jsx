@@ -47,7 +47,7 @@ export default function Header() {
   }
 
   const handleClickOutside = (event) => {
-    if((event.target == document.querySelector(`.profile-icon-img`))) {
+    if (event.target == document.querySelector(`.profile-icon-img`)) {
       return;
     }
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -56,9 +56,9 @@ export default function Header() {
   };
 
   useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
@@ -66,7 +66,7 @@ export default function Header() {
   const { time, dayDate } = formatDate(now);
 
   return (
-    <header className="rounded-l-[0.5rem] shadow-sm" id="header">
+    <header className="rounded-l-[0.5rem] shadow-sm h-[96px]" id="header">
       <nav
         className="mx-auto flex items-center justify-between p-2 py-4 md:px-8 px-5 gap-5"
         aria-label="Global"
@@ -150,7 +150,7 @@ export default function Header() {
               href="#"
               className="flex group items-center gap-x-2 px-5 pb-2 pt-1 box-shadow-md hover:bg-gray-50"
             >
-              <i className="fa-regular fa-heart"></i> 
+              <i className="fa-regular fa-heart"></i>
               <div class="flex-auto font-semibold text-gray-900">Wishlist</div>
             </a>
           </div>
