@@ -44,10 +44,12 @@ export default function RootLayout() {
         </button>
       </div>
       <div
-        className={`right-container shadow-md w-full h-screen overflow-auto md:rounded-l-[1.3rem] md:w-[calc(100%-6rem)] bg-back`}
+        className={`right-container shadow-md w-full h-screen md:rounded-l-[1.3rem] md:w-[calc(100%-6rem)] bg-back`}
       >
         <Header />
-        <Outlet />
+        <div className="content-container w-full overflow-y-auto h-[calc(100%-96px)]">
+          <Outlet />
+        </div>
       </div>
     </div>
   );
