@@ -1,9 +1,10 @@
 import React from "react";
 import PrimaryCard from "./PrimaryCard";
+import Categories from "../categories/Categories";
 
 export default function PrimaryCards() {
   return (
-    <div className="border-2 border-priamry flex flex-auto lg:w-[30%] w-full order-2 lg:order-1">
+    <div className=" flex flex-auto w-full order-2 lg:order-1"> 
       <div className="w-full">
         <div className="flex justify-between items-center">
           <h2 className="text-[1.5rem] font-semibold font-secondary text-gray-800">
