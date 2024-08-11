@@ -6,12 +6,7 @@ const Categories = () => {
 
   return (
     <div className="categories py-2">
-      <div>
-        <h2 className="text-[1.6rem] font-semibold font-secondary text-gray-800">
-          Discover
-        </h2>
-      </div>
-      <div className="categories flex flex-row gap-3 py-4 overflow-x-auto md:overflow-hidden">
+      <div className="categories flex flex-row gap-3 pb-4 overflow-x-auto md:overflow-hidden">
         {categoires.map((item, index) => {
           return (
             <CategoryItem

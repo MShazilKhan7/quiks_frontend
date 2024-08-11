@@ -39,6 +39,7 @@ const formatDate = (date) => {
 };
 
 export default function Header() {
+  const [currentDateTime, setCurrentDateTime] = useState(new Date());
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -62,8 +63,15 @@ export default function Header() {
     };
   }, []);
 
-  const now = new Date();
-  const { time, dayDate } = formatDate(now);
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentDateTime(new Date());
+    }, 60000); 
+
+    return () => clearInterval(intervalId);  
+  }, []);
+
+  const { time, dayDate } = formatDate(currentDateTime);
 
   return (
     <header className="rounded-l-[0.5rem] shadow-sm h-[96px]" id="header">

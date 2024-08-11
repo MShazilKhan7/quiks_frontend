@@ -28,8 +28,8 @@ export default function PrimaryCard(props) {
   }, []);
 
   return (
-    <div className="truncate book-primary-card w-full bg-white hover:bg-primary cursor-pointer p-3 rounded-[1rem] shadow-lg flex gap-3 text-gray-800 hover:text-white transition-all duration-300 ">
-      <div className=" rounded-md shadow-md md:w-[120px] w-[80px] md:h-[120px] h-[80px] bg-secondary">
+    <div className="truncate book-primary-card w-full bg-white hover:bg-primary cursor-pointer p-3 rounded-[1rem] shadow-lg flex gap-3 text-gray-800 hover:text-white transition-all duration-300 relative">
+      <div className=" rounded-md shadow-md md:w-[120px] w-[120px] md:h-[100px] h-[100px] bg-secondary">
         <img
           className="w-[100%] h-[100%] rounded-[10px] shadow-md"
           src={props.image}
@@ -54,12 +54,12 @@ export default function PrimaryCard(props) {
             <i className={`fa-solid fa-ellipsis-vertical menu-${props.id}`}></i>
           </button>
         </div>
-        <div className="flex justify-between align-center truncate">
-          <p className="truncate max-w-[75%] font-semibold font-secondary text-sm mt-3 text-gray-500 length">
-            <i className="fa-regular fa-hourglass-half"></i>&nbsp;{" "}
+        <div className="flex justify-between align-center">
+          <p className="truncate max-w-[75%] font-semibold font-secondary text-[0.8rem] mt-2 text-gray-500 length">
+            <i className="fa-regular fa-hourglass-half"></i>&nbsp;
             {props.length} mins
           </p>
-          <button className="w-[40px] h-[40px] flex items-center justify-center rounded-full bg-gray-200 text-secondary hover:bg-secondary hover:text-white focus:outline-none mx-2 transition-all duration-300">
+          <button className="w-[40px] h-[40px] -mt-4 flex items-center justify-center rounded-full bg-gray-200 text-secondary hover:bg-secondary hover:text-white focus:outline-none mx-2 transition-all duration-300">
             <i className="fa-solid fa-play"></i>
           </button>
         </div>

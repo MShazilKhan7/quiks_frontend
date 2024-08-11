@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../header/Header";
 import Sidebar from "../sidebar/Sidebar";
-import PrimaryCards from "../primaryCard/PrimaryCards";
-import Categories from "../categories/Categories";
 
 export default function RootLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -24,7 +22,7 @@ export default function RootLayout() {
   return (
     <div className={`bg-primay w-screen flex h-screen justify-between `}>
       <div
-        className={`left-container md:px-4 absolute top-0 left-0 md:static h-full md:w-[6rem] transition-all duration-500 bg-back_secondary ${
+        className={`left-container md:px-4 absolute top-0 left-0 md:static z-10 h-full md:w-[6rem] transition-all duration-500 bg-back_secondary ${
           isSidebarOpen ? "w-[6rem] px-4" : "w-0 px-0"
         }`}
       >
