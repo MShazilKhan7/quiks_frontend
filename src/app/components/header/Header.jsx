@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 const formatDate = (date) => {
   const days = [
@@ -39,6 +40,9 @@ const formatDate = (date) => {
 };
 
 export default function Header() {
+
+  const navigate = useNavigate();
+
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -101,8 +105,8 @@ export default function Header() {
           </button>
         </div>
         <div className="flex-none hidden md:flex justify-end gap-6 min-w-[50px] ">
-          <h2 className="hidden lg:flex font-semibold text-gray-800 items-center justify-center">
-            Shazil Khan
+          <h2 className="hidden lg:flex font-semibold text-gray-800 items-center justify-center cursor-pointer hover:underline" onClick={() => {navigate('/login')}}>
+            Login
           </h2>
 
           <button
@@ -111,7 +115,7 @@ export default function Header() {
           >
             <img
               alt="profile"
-              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+              src="https://img.freepik.com/free-vector/user-circles-set_78370-4704.jpg?t=st=1723506283~exp=1723509883~hmac=ca14e50c2b127f828d41dbfe9c45c39748bc9b8c18e9aa5b278b4d26819c15c6&w=740"
               className="h-11 w-11 rounded-full"
             />
           </button>

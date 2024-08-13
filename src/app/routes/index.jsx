@@ -2,10 +2,15 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RootLayout from "../components/RootLayout/RootLayout";
 import { navigationRoutes } from "./navigationRoutes";
+import Login from '../components/Authentication/Login'
+import Signup from "../components/Authentication/Signup";
+
 const AppRoutes = () => {
   return (
     <Router>
       <Routes>
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/" element={<RootLayout />}>
           {navigationRoutes.map((menu, index) => {
             return (
