@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { Tooltip } from "@material-tailwind/react";
 
 const formatDate = (date) => {
   const days = [
@@ -40,7 +41,6 @@ const formatDate = (date) => {
 };
 
 export default function Header() {
-
   const navigate = useNavigate();
 
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
@@ -70,9 +70,9 @@ export default function Header() {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentDateTime(new Date());
-    }, 60000); 
+    }, 60000);
 
-    return () => clearInterval(intervalId);  
+    return () => clearInterval(intervalId);
   }, []);
 
   const { time, dayDate } = formatDate(currentDateTime);
@@ -105,7 +105,12 @@ export default function Header() {
           </button>
         </div>
         <div className="flex-none hidden md:flex justify-end gap-6 min-w-[50px] ">
-          <h2 className="hidden lg:flex font-semibold text-gray-800 items-center justify-center cursor-pointer hover:underline" onClick={() => {navigate('/login')}}>
+          <h2
+            className="hidden lg:flex font-semibold text-gray-800 items-center justify-center cursor-pointer hover:underline"
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
             Login
           </h2>
 
@@ -119,15 +124,16 @@ export default function Header() {
               className="h-11 w-11 rounded-full"
             />
           </button>
-          <button className="hidden sm:flex h-11 w-11 flex-none items-center justify-center bg-greyaccent hover:bg-accent text-accent hover:text-white rounded-full shadow-md">
-            <i className="fa-solid fa-heart"></i>
-          </button>
-          <button
-            title="notifications"
-            className="hidden sm:flex h-11 w-11 flex-none items-center justify-center bg-greyaccent hover:bg-accent hover:text-white rounded-full shadow-md"
-          >
-            <i className="fa-regular fa-bell"></i>
-          </button>
+          <Tooltip content="favourites">
+            <button className="hidden sm:flex h-11 w-11 flex-none items-center justify-center bg-greyaccent hover:bg-accent text-accent hover:text-white rounded-full shadow-md">
+              <i className="fa-solid fa-heart"></i>
+            </button>
+          </Tooltip>
+          <Tooltip content="Notification">
+            <button className="hidden sm:flex h-11 w-11 flex-none items-center justify-center bg-greyaccent hover:bg-accent hover:text-white rounded-full shadow-md">
+              <i className="fa-regular fa-bell"></i>
+            </button>
+          </Tooltip>
         </div>
 
         {/* Mobile Profile */}
