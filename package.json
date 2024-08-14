@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.6.0",
+    "@material-tailwind/react": "^2.1.9",
     "@reduxjs/toolkit": "^2.2.7",
     "autoprefixer": "^10.4.19",
     "postcss-cli": "^11.0.0",

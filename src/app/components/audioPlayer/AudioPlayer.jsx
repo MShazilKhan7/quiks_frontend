@@ -1,10 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import {
-  FaPlay,
-  FaPause,
-  FaStepForward,
-  FaStepBackward,
-} from "react-icons/fa";
+import { FaPlay, FaPause, FaStepForward, FaStepBackward } from "react-icons/fa";
+import { Tooltip } from "@material-tailwind/react";
 
 export default function AudioPlayer() {
   const chapters = [
@@ -128,32 +124,41 @@ export default function AudioPlayer() {
           </div>
         </div>
         <div className="controls flex justify-center items-center">
-          <button
-            onClick={handleBackward}
-            disabled={currentChapter === 0}
-            className="w-[40px] h-[40px] flex items-center justify-center rounded-full bg-gray-200 text-secondary hover:bg-secondary hover:text-white focus:outline-none mx-2 transition-all duration-300"
-          >
-            <FaStepBackward />
-          </button>
-          <button
-            onClick={togglePlayPause}
-            className="w-[50px] h-[50px] flex items-center justify-center rounded-full bg-gray-200 text-secondary hover:bg-secondary hover:text-white focus:outline-none mx-2 transition-all duration-300"
-          >
-            {playPauseBtn}
-          </button>
-          <button
-            onClick={handleForward}
-            disabled={currentChapter === chapters.length - 1}
-            className="w-[40px] h-[40px] flex items-center justify-center rounded-full bg-gray-200 text-secondary hover:bg-secondary hover:text-white focus:outline-none mx-2 transition-all duration-300"
-          >
-            <FaStepForward />
-          </button>
+          <Tooltip placement="bottom" content="previous chapter">
+            <button
+              onClick={handleBackward}
+              disabled={currentChapter === 0}
+              className="w-[40px] h-[40px] flex items-center justify-center rounded-full bg-gray-200 text-secondary hover:bg-secondary hover:text-white focus:outline-none mx-2 transition-all duration-300"
+            >
+              <FaStepBackward />
+            </button>
+          </Tooltip>
+          <Tooltip placement="bottom" content="Play">
+            <button
+              onClick={togglePlayPause}
+              className="w-[50px] h-[50px] flex items-center justify-center rounded-full bg-gray-200 text-secondary hover:bg-secondary hover:text-white focus:outline-none mx-2 transition-all duration-300"
+            >
+              {playPauseBtn}
+            </button>
+          </Tooltip>
+          <Tooltip placement="bottom" content="next chapter">
+            <button
+              onClick={handleForward}
+              disabled={currentChapter === chapters.length - 1}
+              className="w-[40px] h-[40px] flex items-center justify-center rounded-full bg-gray-200 text-secondary hover:bg-secondary hover:text-white focus:outline-none mx-2 transition-all duration-300"
+            >
+              <FaStepForward />
+            </button>
+          </Tooltip>
         </div>
       </div>
       {currentChapter === chapters.length - 1 && currentTime === totalTime && (
         <div className="text-center">
           <p className="text-gray-800 mb-4 text-[2rem] font-bold">Completed!</p>
-          <button className="bg-secondary text-white px-3 py-2" onClick={repeat}>
+          <button
+            className="bg-secondary text-white px-3 py-2"
+            onClick={repeat}
+          >
             Play Again
           </button>
         </div>
