@@ -10,12 +10,12 @@ const Discover = () => {
           Discover
         </h2>
       </div>
-      <div className="categories w-full overflow-x-auto px-8 py-2">
-        <Categories />
-      </div>
       <div className="w-full lg:px-8 px-5  gap-5 mx-auto">
         <div className="grid lg:flex gap-5 ">
           <div className="lg:w-[60%] order-2 lg:order-1">
+            <div className="categories w-full overflow-x-auto py-2">
+              <Categories />
+            </div>
             <PrimaryCards />
           </div>
           {/* Audio Player */}

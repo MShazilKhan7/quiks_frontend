@@ -1,4 +1,7 @@
 import Discover from "../components/discover/Discover";
+import CategoriesPage from '../components/CategoriesPage/CategoryCards'
+import CategoryDetail from "../components/CategoriesPage/CategoryDetail";
+
 export const navigationRoutes = [
   {
     path: "/",
@@ -10,7 +13,11 @@ export const navigationRoutes = [
   },
   {
     path: "categories",
-    element: <>categories</>,
+    element: <CategoriesPage />,
+  },
+  {
+    path: "categories/:category",
+    element: <CategoryDetail />
   },
   {
     path: "profile",
