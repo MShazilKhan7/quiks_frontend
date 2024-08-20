@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function PrimaryCard(props) {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
-
+  const navigate = useNavigate();
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
   };
@@ -27,8 +28,14 @@ export default function PrimaryCard(props) {
     };
   }, []);
 
+  const handleCardClick = () => {
+    navigate("books/1/");
+  };
   return (
-    <div className="truncate book-primary-card w-full bg-white hover:bg-primary cursor-pointer p-3 rounded-[1rem] shadow-lg flex gap-3 text-gray-800 hover:text-white transition-all duration-300 relative">
+    <div
+      onClick={handleCardClick}
+      className="truncate cursor-pointer book-primary-card w-full bg-white hover:bg-primary cursor-pointer p-3 rounded-[1rem] shadow-lg flex gap-3 text-gray-800 hover:text-white transition-all duration-300 relative"
+    >
       <div className="rounded-md md:w-[120px] w-[120px] md:h-[100px] h-[100px]">
         <img
           className="w-[100%] h-[100%] rounded-[10px]"
