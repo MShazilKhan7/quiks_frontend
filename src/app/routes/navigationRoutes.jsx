@@ -1,6 +1,7 @@
 import Discover from "../components/discover/Discover";
 import CategoriesPage from "../components/CategoriesPage/CategoryCards";
 import CategoryDetail from "../components/CategoriesPage/CategoryDetail";
+import Profile from "../components/Profile";
 import BookDetails from "../components/BookDetail/BookDetails";
 export const navigationRoutes = [
   {
@@ -21,11 +22,11 @@ export const navigationRoutes = [
   },
   {
     path: "profile",
-    element: <>categories</>,
+    element: <Profile />,
   },
   {
     path: "settings",
-    element: <>categories</>,
+    element: <>Settings</>,
   },
   {
     path: "books/:bookId",
