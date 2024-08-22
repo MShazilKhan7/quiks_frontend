@@ -21,17 +21,10 @@ body {
     --accent: #F2798F;
     --light: #7395D9;
     --back-secondary:#DBE0EA;
-    --font-primary: 'Inter', sans-serif;
-    --font-secondary: 'Montserrat', sans-serif;
+    /* --font-primary: 'Inter', sans-serif;
+    --font-secondary: 'Montserrat', sans-serif; */
 }
 
-/* Main Container */
-/* #main-container.open {
-    width: calc(100vw - 5rem);
-}
-#main-container.close {
-    width: 100vw;
-} */
 
 /* Sidebar */
 #sidebar {
@@ -54,22 +47,6 @@ body {
     display: none;
 }
 
-@media (max-width: 768px) {
-    /* Show toggle button on small devices */
-    /* #sidebar .toggle-btn {
-        display: block;
-    }
-    #main-container {
-        width: 100vw;
-        border-radius: 0;
-    } */
-}
-
-/* Header */
-/* #header {
-    border-bottom: 1px solid var(--primary-color);
-    height: 5rem;
-} */
 #header #time {
     font-size: 1.95rem;
     font-family: var(--font-secondary);

@@ -5,6 +5,9 @@ export default withMT({
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      screens: {
+        tablets: { max: "1024px" },
+      },
       colors: {
         primary: "#F27E7E",
         back: "#EBEBF2",
