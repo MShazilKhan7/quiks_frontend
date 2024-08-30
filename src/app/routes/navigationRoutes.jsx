@@ -3,6 +3,7 @@ import CategoriesPage from "../components/CategoriesPage/CategoryCards";
 import CategoryDetail from "../components/CategoriesPage/CategoryDetail";
 import Profile from "../components/Profile";
 import BookDetails from "../components/BookDetail/BookDetails";
+import BookRead from "../components/BookDetail/BookRead";
 export const navigationRoutes = [
   {
     path: "/",
@@ -31,6 +32,10 @@ export const navigationRoutes = [
   {
     path: "books/:bookId",
     element: <BookDetails />,
+  },
+  {
+    path: "books/:bookId/read",
+    element: <BookRead />,
   },
 ];
 
