@@ -1,4 +1,6 @@
 import React from "react";
+import { Tooltip } from "@material-tailwind/react";
+import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
@@ -25,7 +27,7 @@ export default function Login() {
             />
           </div>
           <form className="md:max-w-md w-full mx-auto">
-            <div className="mb-12">
+            <div className="mb-12 flex justify-between">
               <h3 className="text-4xl font-extrabold text-secondary">
                 Login
               </h3>
@@ -39,7 +41,7 @@ export default function Login() {
                   className="w-full text-sm border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none"
                   placeholder="Enter email"
                 />
-                <i className="fa-regular fa-envelope w-[18px] h-[18px] absolute right-2 text-primary"></i> 
+                <i className="fa-regular fa-envelope w-[18px] h-[18px] absolute right-2 text-primary"></i>
               </div>
             </div>
             <div className="mt-8">
@@ -88,11 +90,28 @@ export default function Login() {
               <p className="text-gray-800 text-sm text-center mt-6">
                 Don't have an account{" "}
                 <button
-                  className="text-secondary font-semibold hover:underline ml-1 whitespace-nowrap" onClick={() => {navigate('/signup')}}
+                  className="text-secondary font-semibold hover:underline ml-1 whitespace-nowrap" onClick={() => { navigate('/signup') }}
                 >
                   Register here
                 </button>
               </p>
+              <div className="flex justify-center gap-3 mt-8 mb-2">
+                <Tooltip content="Facebook">
+                  <button className="hidden sm:flex h-8 w-8 flex-none items-center justify-center bg-greyaccent hover:bg-accent hover:text-white rounded-full shadow-md">
+                    <FaGoogle size={14} />
+                  </button>
+                </Tooltip>
+                <Tooltip content="Google">
+                  <button className="hidden sm:flex h-8 w-8 flex-none items-center justify-center bg-greyaccent hover:bg-accent hover:text-white rounded-full shadow-md">
+                    <FaFacebookF size={14} />
+                  </button>
+                </Tooltip>
+                <Tooltip content="Linkedin">
+                  <button className="hidden sm:flex h-8 w-8 flex-none items-center justify-center bg-greyaccent hover:bg-accent hover:text-white rounded-full shadow-md">
+                    <FaLinkedinIn size={14} />
+                  </button>
+                </Tooltip>
+              </div>
             </div>
           </form>
         </div>
