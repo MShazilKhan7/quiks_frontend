@@ -4,7 +4,6 @@ const CategoryItem = ({ name, icon, isActive, index, setActiveIndex }) => {
   const handleClick = () => {
     setActiveIndex(index);
   };
-  console.log(name);
   return (
     <div
       onClick={handleClick}
