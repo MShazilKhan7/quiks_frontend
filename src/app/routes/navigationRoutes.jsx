@@ -40,7 +40,7 @@ export const navigationRoutes = [
   },
   {
     path: "/library",
-    element: <Library />,
+    element: <Library />
   }
 ];
 
