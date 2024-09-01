@@ -3,6 +3,7 @@ import CategoriesPage from "../components/CategoriesPage/CategoryCards";
 import CategoryDetail from "../components/CategoriesPage/CategoryDetail";
 import Profile from "../components/Profile";
 import BookDetails from "../components/BookDetail/BookDetails";
+import Library from "../components/Library/Library";
 export const navigationRoutes = [
   {
     path: "/",
@@ -32,6 +33,10 @@ export const navigationRoutes = [
     path: "books/:bookId",
     element: <BookDetails />,
   },
+  {
+    path: "/library",
+    element: <Library />
+  }
 ];
 
 export default navigationRoutes;

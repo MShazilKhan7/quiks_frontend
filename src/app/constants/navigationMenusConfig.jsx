@@ -3,7 +3,7 @@ import { CiSearch } from "react-icons/ci";
 import { BiCategoryAlt } from "react-icons/bi";
 import { IoMdPerson } from "react-icons/io";
 import { CiSettings } from "react-icons/ci";
-
+import { CiBookmark } from "react-icons/ci";
 export const navigation = [
   {
     path: "/",
@@ -11,14 +11,14 @@ export const navigation = [
     icon: <GoHomeFill />,
   },
   {
-    path: "search",
-    title: "Search",
-    icon: <CiSearch />,
-  },
-  {
     path: "categories",
     title: "Categories",
     icon: <BiCategoryAlt />,
+  },
+  {
+    path: "library",
+    title: "Library",
+    icon: < CiBookmark />,
   },
   {
     path: "profile",
