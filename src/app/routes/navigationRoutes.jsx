@@ -4,6 +4,7 @@ import CategoryDetail from "../components/CategoriesPage/CategoryDetail";
 import Profile from "../components/Profile";
 import BookDetails from "../components/BookDetail/BookDetails";
 import BookRead from "../components/BookDetail/BookRead";
+import Library from "../components/Library/Library";
 export const navigationRoutes = [
   {
     path: "/",
@@ -37,6 +38,10 @@ export const navigationRoutes = [
     path: "books/:bookId/read",
     element: <BookRead />,
   },
+  {
+    path: "/library",
+    element: <Library />,
+  }
 ];
 
 export default navigationRoutes;
