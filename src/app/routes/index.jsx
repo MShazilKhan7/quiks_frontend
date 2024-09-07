@@ -12,9 +12,15 @@ const AppRoutes = () => {
   return (
     <Router>
       <Routes>
-        {/* Public routes */}
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
+        {/* Redirect authenticated users trying to access login/signup */}
+        <Route
+          path="/login"
+          element={user ? <Navigate to="/" /> : <Login />}
+        />
+        <Route
+          path="/signup"
+          element={user ? <Navigate to="/" /> : <Signup />}
+        />
 
         {/* Protected routes */}
         {user ? (
@@ -33,8 +39,8 @@ const AppRoutes = () => {
           <Route path="*" element={<Navigate to="/login" />} />
         )}
 
-        {/* Redirect to '/' if authenticated and if not redirect to '/login'  */}
-        <Route path="*" element={<Navigate to={user ? "/" : "/login"} />} />
+        {/* Fallback for unauthenticated users trying to access any other path */}
+        {!user && <Route path="*" element={<Navigate to="/login" />} />}
       </Routes>
     </Router>
   );
