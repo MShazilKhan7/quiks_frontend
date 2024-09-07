@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Tooltip } from "@material-tailwind/react";
+import { UserContext } from "../../context/UserContext";
 
 const formatDate = (date) => {
   const days = [
@@ -42,7 +43,8 @@ const formatDate = (date) => {
 
 export default function Header() {
   const navigate = useNavigate();
-
+  const { user, setUser } = useContext(UserContext);
+  
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -75,6 +77,11 @@ export default function Header() {
     return () => clearInterval(intervalId);
   }, []);
 
+  function handleLogout() {
+    setUser(null);
+    navigate('/login')
+  }
+
   const { time, dayDate } = formatDate(currentDateTime);
 
   return (
@@ -105,32 +112,49 @@ export default function Header() {
           </button>
         </div>
         <div className="flex-none hidden md:flex justify-end gap-6 min-w-[50px] ">
-          <h2
-            className="hidden lg:flex font-semibold text-gray-800 items-center justify-center cursor-pointer hover:underline"
-            onClick={() => {
-              navigate("/login");
-            }}
-          >
-            Login
-          </h2>
+          {!user ?
+            <h2 className="hidden lg:flex font-semibold text-gray-800 items-center justify-center cursor-pointer hover:underline"
+              onClick={() => { navigate("/login"); }}
+            >
+              Login
+            </h2> :
+            <h2 className="hidden lg:flex font-semibold text-gray-800 items-center justify-center cursor-pointer hover:underline"
+              onClick={handleLogout}
+            >
+              Logout
+            </h2>
+          }
 
-          <button
-            id="profile-icon"
-            className="shadow-lg h-11 w-11 rounded-full"
-          >
-            <img
-              alt="profile"
-              src="https://img.freepik.com/free-vector/user-circles-set_78370-4704.jpg?t=st=1723506283~exp=1723509883~hmac=ca14e50c2b127f828d41dbfe9c45c39748bc9b8c18e9aa5b278b4d26819c15c6&w=740"
-              className="h-11 w-11 rounded-full"
-            />
-          </button>
+          {
+            user && (
+              <Tooltip content={user[0].name}>
+                {
+                  user[0].profile_pic ? <button
+                    id="profile-icon"
+                    className="shadow-lg h-11 w-11 rounded-full"
+                  >
+                    <img
+                      alt="profile"
+                      src={user[0].profile_pic}
+                      className="h-11 w-11 rounded-full"
+                    />
+                  </button> : <button
+                    id="profile-icon"
+                    className="hidden sm:flex h-11 w-11 flex-none items-center justify-center bg-greyaccent hover:bg-accent hover:text-white rounded-full shadow-md"
+                  >
+                    {user[0].name.split(' ').map(n => n[0]).slice(0, 2).join('').toUpperCase()}
+                  </button>
+                }
+              </Tooltip>
+            )
+          }
           <Tooltip content="favourites">
             <button className="hidden sm:flex h-11 w-11 flex-none items-center justify-center bg-greyaccent hover:bg-accent text-accent hover:text-white rounded-full shadow-md">
               <i className="fa-solid fa-heart"></i>
             </button>
           </Tooltip>
           <Tooltip content="Notification">
-            <button className="hidden sm:flex h-11 w-11 flex-none items-center justify-center bg-greyaccent hover:bg-accent hover:text-white rounded-full shadow-md">
+            <button className="hidden sm:flex h-11 w-11 flex-none items-center justify-center bg-greyaccent text-accent hover:bg-accent hover:text-white rounded-full shadow-md">
               <i className="fa-regular fa-bell"></i>
             </button>
           </Tooltip>
@@ -151,9 +175,8 @@ export default function Header() {
           </button>
           <div
             ref={dropdownRef}
-            class={`absolute rounded-lg text-sm leading-6 top-[4.5rem] right-3 bg-white shadow-md ${
-              isDropdownOpen ? "block" : "hidden"
-            }`}
+            class={`absolute rounded-lg text-sm leading-6 top-[4.5rem] right-3 bg-white shadow-md ${isDropdownOpen ? "block" : "hidden"
+              }`}
           >
             <a
               href="#"

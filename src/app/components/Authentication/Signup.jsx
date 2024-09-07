@@ -1,8 +1,53 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { UserContext } from "../../context/UserContext";
 
 export default function Signup() {
   const navigate = useNavigate();
+  const { user, setUser } = useContext(UserContext);
+  
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+
+  function signUp(e) {
+    e.preventDefault();
+
+    if(firstName.trim() == '' || lastName.trim() == '' || email.trim() == '' || password.trim() == '') {
+      alert("All field are required");
+      return;
+    }
+
+    const data = {
+      name: firstName + ' ' + lastName,
+      email: email,
+      password: password
+    }
+    // POST request API
+    axios.post("http://localhost:8000/auth/signup", data)
+    .then((res) => {
+      if(res.data.message === "success") {
+        // Successfully logs in
+        setUser(res.data.data);
+        navigate('/');
+      }else {
+        // Error from backend
+        alert(res.data.error);
+      }
+    })
+    .catch(err => {
+      // Unexpected Error
+      alert("something went wrong");
+    })
+  }
+
+  function togglePasswordView() {
+    setShowPassword(!showPassword);
+  }
+
   return (
     <div className="font-[sans-serif] bg-white flex items-center justify-center md:h-screen p-4">
       <div className="shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] max-w-6xl max-md:max-w-lg rounded-md p-6">
@@ -24,7 +69,7 @@ export default function Signup() {
               alt="login-image"
             />
           </div>
-          <form className="md:max-w-md w-full mx-auto">
+          <form className="md:max-w-md w-full mx-auto" onSubmit={signUp}>
             <div className="mb-12">
               <h3 className="text-4xl font-extrabold text-secondary">
                 Signup
@@ -33,9 +78,10 @@ export default function Signup() {
             <div>
               <div className="relative flex items-center">
                 <input
+                  onChange={(e) => setFirstName(e.target.value)}
                   name="first_name"
                   type="text"
-                  required={true}
+                  required
                   className="w-full text-sm border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none"
                   placeholder="Enter first name"
                 />
@@ -45,9 +91,10 @@ export default function Signup() {
             <div className="mt-5">
               <div className="relative flex items-center">
                 <input
+                  onChange={(e) => setLastName(e.target.value)}
                   name="last_name"
                   type="text"
-                  required={true}
+                  required
                   className="w-full text-sm border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none"
                   placeholder="Enter last name"
                 />
@@ -57,9 +104,10 @@ export default function Signup() {
             <div className="mt-5">
               <div className="relative flex items-center">
                 <input
+                  onChange={(e) => setEmail(e.target.value)}
                   name="email"
-                  type="text"
-                  required=""
+                  type="email"
+                  required
                   className="w-full text-sm border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none"
                   placeholder="Enter email"
                 />
@@ -69,13 +117,14 @@ export default function Signup() {
             <div className="mt-5">
               <div className="relative flex items-center">
                 <input
+                  onChange={(e) => setPassword(e.target.value)}
                   name="password"
-                  type="password"
-                  required=""
+                  type={showPassword ? 'text' : 'password'}
+                  required
                   className="w-full text-sm border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none"
                   placeholder="Enter password"
                 />
-                <i class="fa-regular fa-eye w-[18px] h-[18px] absolute right-2 text-primary"></i>
+                <i class={`fa-regular ${showPassword ? "fa-eye" : "fa-eye-slash"} w-[18px] h-[18px] absolute right-2 text-primary cursor-pointer`} onClick={togglePasswordView}></i>
               </div>
             </div>
             <div className="flex flex-wrap items-center justify-between gap-4 mt-6">
@@ -104,7 +153,7 @@ export default function Signup() {
             </div>
             <div className="mt-12">
               <button
-                type="button"
+                type="submit"
                 className="w-full shadow-xl py-2.5 px-5 text-sm font-semibold rounded-md text-white bg-secondary hover:bg-blue-700 focus:outline-none"
               >
                 Signup

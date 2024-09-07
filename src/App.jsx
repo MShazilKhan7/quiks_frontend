@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import "./index.css";
 import AppRoutes from "./app/routes";
+import { UserProvider } from "./app/context/UserContext";
 
 function App() {
 
@@ -18,7 +19,9 @@ function App() {
 
   return (
     <div id="app">
-      <AppRoutes />
+      <UserProvider>
+        <AppRoutes />
+      </UserProvider>
     </div>
   );
 }
