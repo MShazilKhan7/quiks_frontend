@@ -14,6 +14,7 @@ export default function Sidebar({ isOpen, onToggle }) {
         {navigation.map((menu, index) => {
           return (
             <SidebarItem
+              key={index}
               {...menu}
               icon={menu.icon}
               title={menu.title}

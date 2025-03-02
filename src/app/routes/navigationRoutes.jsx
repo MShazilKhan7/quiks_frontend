@@ -1,10 +1,12 @@
-import Discover from "../components/discover/Discover";
-import CategoriesPage from "../components/CategoriesPage/CategoryCards";
-import CategoryDetail from "../components/CategoriesPage/CategoryDetail";
-import Profile from "../components/Profile";
-import BookDetails from "../components/BookDetail/BookDetails";
-import BookRead from "../components/BookDetail/BookRead";
-import Library from "../components/Library/Library";
+import Discover from "../pages/discover";
+import Categories from "../pages/categories";
+import CategoryDetail from "../pages/categoryDetail";
+import Profile from "../pages/profile";
+import BookDetail from "../pages/bookDetail";
+import BookRead from "../pages/bookRead";
+import Library from "../pages/library";
+
+
 export const navigationRoutes = [
   {
     path: "/",
@@ -16,7 +18,7 @@ export const navigationRoutes = [
   },
   {
     path: "categories",
-    element: <CategoriesPage />,
+    element: <Categories />,
   },
   {
     path: "categories/:category",
@@ -32,7 +34,7 @@ export const navigationRoutes = [
   },
   {
     path: "books/:bookId",
-    element: <BookDetails />,
+    element: <BookDetail />,
   },
   {
     path: "books/:bookId/read",

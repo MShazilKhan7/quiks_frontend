@@ -1,8 +1,24 @@
 import React, {useState} from 'react'
-import LibraryPage from './Carousel';
+import Carousel from '../../components/Library/Carousel';
 import { CiBookmark, CiCircleCheck } from "react-icons/ci";
 
-// Data Saved
+export default function Library() {
+
+  const [saved, setSaved] = useState(savedData);
+  const [completed, setCompleted] = useState(completedData);
+
+  return (
+    <>
+      <Carousel data={saved} title="Saved" icon={<CiBookmark size={24} />}/>
+      <hr className='my-5 d-none'/>
+      <Carousel data={completed} title="Completed" icon={<CiCircleCheck size={24}/>}/>
+      <hr className='my-5 d-none'/>
+    </>
+  );
+}
+
+
+// Data from Backend
 const savedData = {
   resources: [
     {
@@ -52,18 +68,3 @@ const completedData = {
     }
   ],
 };
-
-export default function Library() {
-
-  const [saved, setSaved] = useState(savedData);
-  const [completed, setCompleted] = useState(completedData);
-
-  return (
-    <>
-      <LibraryPage data={saved} title="Saved" icon={<CiBookmark size={24} />}/>
-      <hr className='my-5 d-none'/>
-      <LibraryPage data={completed} title="Completed" icon={<CiCircleCheck size={24}/>}/>
-      <hr className='my-5 d-none'/>
-    </>
-  );
-}

@@ -23,8 +23,7 @@ const AppRoutes = () => {
         />
 
         {/* Protected routes */}
-        {user ? (
-          <Route path="/" element={<RootLayout />}>
+        <Route path="/" element={<RootLayout />}>
             {navigationRoutes.map((menu, index) => (
               <Route
                 key={index}
@@ -34,13 +33,9 @@ const AppRoutes = () => {
               />
             ))}
           </Route>
-        ) : (
-          // Redirect to login if not authenticated
-          <Route path="*" element={<Navigate to="/login" />} />
-        )}
 
         {/* Fallback for unauthenticated users trying to access any other path */}
-        {!user && <Route path="*" element={<Navigate to="/login" />} />}
+        {!user && <Route path="*" element={<Navigate to="/" />} />}
       </Routes>
     </Router>
   );
