@@ -8,7 +8,7 @@ export default function Sidebar({ isOpen, onToggle }) {
 
   return (
     <nav
-      className={`h-full overflow-hidden z-10 rounded-r-[0.5rem] md:rounded-r-[0] transition-all duration-300 bg-[#DBE0EA] flex flex-col justify-center `}
+      className={`h-full relative overflow-hidden z-10 rounded-r-[0.5rem] md:rounded-r-[0] transition-all duration-300 bg-[#DBE0EA] flex flex-col justify-center `}
     >
       <div className="flex flex-col gap-4">
         {navigation.map((menu, index) => {
@@ -24,6 +24,11 @@ export default function Sidebar({ isOpen, onToggle }) {
             />
           );
         })}
+      </div>
+      <div className="absolute bottom-0 p-1">
+        <h2 className="hidden lg:flex text-[12px] font-semibold text-gray-800 items-center justify-center cursor-pointer hover:underline text-center">
+          Login As Admin
+        </h2>
       </div>
     </nav>
   );

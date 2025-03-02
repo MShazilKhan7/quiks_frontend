@@ -1,11 +1,9 @@
 // src/store.js
 import { combineReducers } from "redux";
-// import authorReducer from "./slices/authorSlice";
-// import bookReducer from "./slices/bookSlice";
+import bookReducer from "../store/book/bookSlice";
 
 const rootReducer = combineReducers({
-//   author: authorReducer,
-//   book: bookReducer,
+  book: bookReducer,
 });
 
 export default rootReducer;
