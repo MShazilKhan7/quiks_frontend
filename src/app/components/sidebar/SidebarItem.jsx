@@ -23,8 +23,8 @@ export default function SidebarItem({
       }`}
     >
       <div
-        className={`text-sm flex flex-col gap-1 justify-center items-center text-menu ${
-          isActive ? "text-focused_menu" : ""
+        className={`text-sm flex flex-col gap-1 justify-center items-center  ${
+          isActive ? "text-focused_menu" : "text-menu"
         }`}
       >
         <div className="text-[24px] font-bold text-secondary">{icon}</div>
