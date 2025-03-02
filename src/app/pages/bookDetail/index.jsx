@@ -13,8 +13,6 @@ const BookDetail = () => {
         <BookInfo book={book}/>
         <BookStats book={book}/>
         <hr className="w-full h-[1.5px] bg-[#a8a7a7] mt-4" />
-
-
         <CategoryList categories={book.categories} />
         <AboutSection about={book.about} authorInfo={book.authorInfo} />
       </div>

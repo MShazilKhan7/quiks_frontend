@@ -5,7 +5,7 @@ import Profile from "../pages/profile";
 import BookDetail from "../pages/bookDetail";
 import BookRead from "../pages/bookRead";
 import Library from "../pages/library";
-
+import DashboardLayout from "../pages/Dashboard";
 
 export const navigationRoutes = [
   {
@@ -42,8 +42,20 @@ export const navigationRoutes = [
   },
   {
     path: "/library",
-    element: <Library />
-  }
+    element: <Library />,
+  },
 ];
 
+export const dashboardRoutes = [
+  {
+    path: "dashboard/",
+    element: <DashboardLayout />,
+    children: [
+      // {
+      //   path: "/",
+      //   element: "",
+      // },
+    ],
+  },
+];
 export default navigationRoutes;

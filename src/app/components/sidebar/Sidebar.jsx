@@ -1,11 +1,12 @@
 import React from "react";
 import SidebarItem from "./SidebarItem";
 import { navigation } from "../../constants/navigationMenusConfig";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 export default function Sidebar({ isOpen, onToggle }) {
   const [activeIndex, setActiveIndex] = useState(0);
-
+  const navigate = useNavigate();
   return (
     <nav
       className={`h-full relative overflow-hidden z-10 rounded-r-[0.5rem] md:rounded-r-[0] transition-all duration-300 bg-[#DBE0EA] flex flex-col justify-center `}
@@ -26,7 +27,13 @@ export default function Sidebar({ isOpen, onToggle }) {
           );
         })}
       </div>
-      <div className="absolute bottom-0 p-1">
+      <div
+        className="absolute bottom-0 p-1"
+        onClick={() => {
+          console.log("called ..");
+          navigate("/dashboard/");
+        }}
+      >
         <h2 className="hidden lg:flex text-[12px] font-semibold text-gray-800 items-center justify-center cursor-pointer hover:underline text-center">
           Login As Admin
         </h2>
