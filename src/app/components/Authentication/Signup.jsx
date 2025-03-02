@@ -7,6 +7,7 @@ export default function Signup() {
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
   
+  
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -85,7 +86,7 @@ export default function Signup() {
                   className="w-full text-sm border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none"
                   placeholder="Enter first name"
                 />
-                <i class="fa-regular fa-user w-[18px] h-[18px] absolute right-2 text-primary"></i>
+                <i className="fa-regular fa-user w-[18px] h-[18px] absolute right-2 text-primary"></i>
               </div>
             </div>
             <div className="mt-5">
@@ -98,7 +99,7 @@ export default function Signup() {
                   className="w-full text-sm border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none"
                   placeholder="Enter last name"
                 />
-                <i class="fa-regular fa-user w-[18px] h-[18px] absolute right-2 text-primary"></i>
+                <i className="fa-regular fa-user w-[18px] h-[18px] absolute right-2 text-primary"></i>
               </div>
             </div>
             <div className="mt-5">
@@ -124,7 +125,7 @@ export default function Signup() {
                   className="w-full text-sm border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none"
                   placeholder="Enter password"
                 />
-                <i class={`fa-regular ${showPassword ? "fa-eye" : "fa-eye-slash"} w-[18px] h-[18px] absolute right-2 text-primary cursor-pointer`} onClick={togglePasswordView}></i>
+                <i className={`fa-regular ${showPassword ? "fa-eye" : "fa-eye-slash"} w-[18px] h-[18px] absolute right-2 text-primary cursor-pointer`} onClick={togglePasswordView}></i>
               </div>
             </div>
             <div className="flex flex-wrap items-center justify-between gap-4 mt-6">

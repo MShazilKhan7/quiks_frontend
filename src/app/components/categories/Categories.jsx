@@ -9,6 +9,7 @@ const Categories = () => {
       {categoires.map((item, index) => {
         return (
           <CategoryItem
+            key={index}
             {...item}
             isActive={activeIndex === index}
             setActiveIndex={setActiveIndex}

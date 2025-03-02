@@ -1,7 +1,7 @@
 import React from "react";
-import Categories from "../categories/Categories";
-import PrimaryCards from "../primaryCard/PrimaryCards";
-import AudioPlayer from "../audioPlayer/AudioPlayer";
+import Categories from "../../components/categories/Categories";
+import PrimaryCards from "../../components/primaryCard/PrimaryCards";
+import AudioPlayer from "../../components/audioPlayer/AudioPlayer";
 const Discover = () => {
   return (
     <>

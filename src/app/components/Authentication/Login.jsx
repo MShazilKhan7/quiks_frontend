@@ -91,7 +91,7 @@ export default function Login() {
                   className="w-full text-sm border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none"
                   placeholder="Enter password"
                 />
-                <i class="fa-regular fa-eye w-[18px] h-[18px] absolute right-2 text-primary"></i>
+                <i className="fa-regular fa-eye w-[18px] h-[18px] absolute right-2 text-primary"></i>
               </div>
             </div>
             <div className="flex flex-wrap items-center justify-between gap-4 mt-6">

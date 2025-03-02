@@ -108,7 +108,7 @@ export default function Header() {
             className="min-w-0 flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2.5 focus:outline-none ring-white/10 sm:text-sm sm:leading-6"
           />
           <button className="p-2 pr-3" type="submit">
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <i className="fa-solid fa-magnifying-glass"></i>
           </button>
         </div>
         <div className="flex-none hidden md:flex justify-end gap-6 min-w-[50px] ">
@@ -175,7 +175,7 @@ export default function Header() {
           </button>
           <div
             ref={dropdownRef}
-            class={`absolute rounded-lg text-sm leading-6 top-[4.5rem] right-3 bg-white shadow-md ${isDropdownOpen ? "block" : "hidden"
+            className={`absolute rounded-lg text-sm leading-6 top-[4.5rem] right-3 bg-white shadow-md ${isDropdownOpen ? "block" : "hidden"
               }`}
           >
             <a
@@ -183,7 +183,7 @@ export default function Header() {
               className="flex group items-center gap-x-2 px-5 pt-2 pb-1 box-shadow-md hover:bg-gray-50"
             >
               <i className="fa-regular fa-bell"></i>
-              <div class="flex-auto font-semibold text-gray-900">
+              <div className="flex-auto font-semibold text-gray-900">
                 Notifications
               </div>
             </a>
@@ -192,7 +192,7 @@ export default function Header() {
               className="flex group items-center gap-x-2 px-5 pb-2 pt-1 box-shadow-md hover:bg-gray-50"
             >
               <i className="fa-regular fa-heart"></i>
-              <div class="flex-auto font-semibold text-gray-900">Wishlist</div>
+              <div className="flex-auto font-semibold text-gray-900">Wishlist</div>
             </a>
           </div>
         </div>
