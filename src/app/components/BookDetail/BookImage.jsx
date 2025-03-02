@@ -6,7 +6,6 @@ const BookImage = () => {
   const [isHovered, setIsHovered] = useState(false);
   const location = useLocation();
 
-  console.log(`${location.pathname}read/`);
   return (
     <div
       className="relative flex justify-center items-center w-full h-[300px] md:w-[32%] md:h-[38%] transition-all duration-300"

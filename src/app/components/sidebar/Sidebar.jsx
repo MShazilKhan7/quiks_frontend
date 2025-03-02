@@ -30,7 +30,6 @@ export default function Sidebar({ isOpen, onToggle }) {
       <div
         className="absolute bottom-0 p-1"
         onClick={() => {
-          console.log("called ..");
           navigate("/dashboard/");
         }}
       >
