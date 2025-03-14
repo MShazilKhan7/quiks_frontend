@@ -1,11 +1,7 @@
 import {
   ChevronRight,
   GalleryVerticalEnd,
-  AudioWaveform,
-  Command,
-  SquareTerminal,
   Bot,
-  BookOpen,
   Settings2,
   Frame,
   PieChart,
@@ -19,15 +15,17 @@ import {
 } from "../../ui/collapsible";
 import {
   Sidebar,
+  SidebarHeader,
   SidebarContent,
   SidebarGroup,
-  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
+  SidebarFooter,
+
 } from "../../ui/sidebar";
 
 // This is sample data.
@@ -37,82 +35,33 @@ const items = {
     email: "m@example.com",
     avatar: "/avatars/shadcn.jpg",
   },
-  teams: [
-    {
-      name: "Acme Inc",
-      logo: GalleryVerticalEnd,
-      plan: "Enterprise",
-    },
-    {
-      name: "Acme Corp.",
-      logo: AudioWaveform,
-      plan: "Startup",
-    },
-    {
-      name: "Evil Corp.",
-      logo: Command,
-      plan: "Free",
-    },
-  ],
   navMain: [
     {
       title: "Books Management",
-      url: "#",
-      icon: SquareTerminal,
+      icon: GalleryVerticalEnd,
       isActive: true,
       items: [
+        {
+          title: "Books",
+          url: "#",
+        },
         {
           title: "Add a Book",
           url: "#",
         },
-        {
-          title: "Edit Book",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
-        },
       ],
     },
     {
-      title: "Models",
+      title: "Authors Management",
       url: "#",
       icon: Bot,
       items: [
         {
-          title: "Genesis",
+          title: "Authors",
           url: "#",
         },
         {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
+          title: "Add an Author",
           url: "#",
         },
       ],
@@ -163,44 +112,77 @@ const items = {
 export function DbSidebar() {
   return (
     <Sidebar>
+      <SidebarHeader>
+        <UserInfo />
+      </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Admin Panel</SidebarGroupLabel>
           <SidebarMenu>
-            {items.navMain.map((item) => (
-              <Collapsible
-                key={item.title}
-                asChild
-                defaultOpen={item.isActive}
-                className="group/collapsible"
-              >
-                <SidebarMenuItem>
-                  <CollapsibleTrigger asChild>
-                    <SidebarMenuButton tooltip={item.title}>
-                      {item.icon && <item.icon />}
-                      <span>{item.title}</span>
-                      <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
-                    </SidebarMenuButton>
-                  </CollapsibleTrigger>
-                  <CollapsibleContent>
-                    <SidebarMenuSub>
-                      {item.items?.map((subItem) => (
-                        <SidebarMenuSubItem key={subItem.title}>
-                          <SidebarMenuSubButton asChild>
-                            <a href={subItem.url}>
-                              <span>{subItem.title}</span>
-                            </a>
-                          </SidebarMenuSubButton>
-                        </SidebarMenuSubItem>
-                      ))}
-                    </SidebarMenuSub>
-                  </CollapsibleContent>
-                </SidebarMenuItem>
-              </Collapsible>
-            ))}
+            <Navgation />
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>
+        <div className="flex justify-between p-4">
+          <div className="flex items-center">
+            <button className="text-sm text-red-500 hover:underline">Logout</button>
+          </div>
+        </div>
+      </SidebarFooter>
     </Sidebar>
+  );
+}
+
+function UserInfo() {
+  return (
+    <>
+      <div className="flex items-center gap-2 px-4 py-2">
+        <div className="h-8 w-8 rounded-full flex items-center justify-center bg-gray-200">
+          <span className="text-lg font-semibold">HA</span>
+        </div>
+        <div className="flex flex-col">
+          <span className="text-sm font-semibold">{items.user.name}</span>
+          <span className="text-xs text-gray-500">{items.user.email}</span>
+        </div>
+      </div>
+    </>
+  );
+}
+
+function Navgation() {
+  return (
+    <div>
+      {items.navMain.map((item) => (
+        <Collapsible
+          key={item.title}
+          asChild
+          defaultOpen={item.isActive}
+          className="group/collapsible"
+        >
+          <SidebarMenuItem>
+            <CollapsibleTrigger asChild>
+              <SidebarMenuButton tooltip={item.title}>
+                {item.icon && <item.icon />}
+                <span>{item.title}</span>
+                <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+              </SidebarMenuButton>
+            </CollapsibleTrigger>
+            <CollapsibleContent>
+              <SidebarMenuSub>
+                {item.items?.map((subItem) => (
+                  <SidebarMenuSubItem key={subItem.title}>
+                    <SidebarMenuSubButton asChild>
+                      <a href={subItem.url}>
+                        <span>{subItem.title}</span>
+                      </a>
+                    </SidebarMenuSubButton>
+                  </SidebarMenuSubItem>
+                ))}
+              </SidebarMenuSub>
+            </CollapsibleContent>
+          </SidebarMenuItem>
+        </Collapsible>
+      ))}
+    </div>
   );
 }
