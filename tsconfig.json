@@ -4,8 +4,8 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "jsx": "react-jsx"
-    // Other options...
+    "jsx": "react-jsx",
+    "lib": ["es2016", "dom"]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]
