@@ -1,42 +1,33 @@
-import React, { useContext } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
-import RootLayout from "../components/RootLayout/RootLayout";
-import { dashboardRoutes, navigationRoutes } from "./navigationRoutes";
-import { UserContext } from "../context/UserContext";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 import Login from "../components/Authentication/Login";
 import Signup from "../components/Authentication/Signup";
+import RootLayout from "../components/RootLayout/RootLayout";
+import ProtectedRoute from "../components/Authentication/ProtectedRoute";
+import { dashboardRoutes, navigationRoutes } from "./navigationRoutes";
 
-const AppRoutes = () => {
-  const { user } = useContext(UserContext); // Properly consume the context
-
+const Router = () => {
   return (
-    <Router>
-      <Routes>
-        {/* Redirect authenticated users trying to access login/signup */}
-        <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
-        <Route
-          path="/signup"
-          element={user ? <Navigate to="/" /> : <Signup />}
-        />
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
 
-        {/* Protected routes */}
-        <Route path="/" element={<RootLayout />}>
-          {navigationRoutes.map((menu, index) => (
-            <Route
-              key={index}
-              index={index === 0}
-              path={menu.path}
-              element={menu.element}
-            />
-          ))}
-        </Route>
+      {/* Protected Routing can be implemented here */}
+      <Route
+        path="/"
+        element={
+          <RootLayout />
+        }
+      >
+        {navigationRoutes.map((menu, index) => (
+          <Route
+            key={index}
+            index={index === 0}
+            path={menu.path}
+            element={menu.element}
+          />
+        ))}
 
-        {/* Dashboard routes */}
         {dashboardRoutes.map((route, index) => (
           <Route key={index} path={route.path} element={route.element}>
             {route.children &&
@@ -50,12 +41,9 @@ const AppRoutes = () => {
               ))}
           </Route>
         ))}
-
-        {/* Fallback for unauthenticated users */}
-        {!user && <Route path="*" element={<Navigate to="/" />} />}
-      </Routes>
-    </Router>
+      </Route>
+    </Routes>
   );
 };
 
-export default AppRoutes;
+export default Router;

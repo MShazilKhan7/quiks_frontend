@@ -1,48 +1,52 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { UserContext } from "../../context/UserContext";
+import axiosInstance from "../../config/axios";
 
 export default function Signup() {
   const navigate = useNavigate();
-  const { user, setUser } = useContext(UserContext);
-  
+  const { login } = useContext(UserContext);
   
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  function signUp(e) {
+  async function signUp(e) {
     e.preventDefault();
+    setError('');
 
-    if(firstName.trim() == '' || lastName.trim() == '' || email.trim() == '' || password.trim() == '') {
-      alert("All field are required");
+    if(firstName.trim() === '' || lastName.trim() === '' || email.trim() === '' || password.trim() === '') {
+      setError("All fields are required");
       return;
     }
 
     const data = {
-      name: firstName + ' ' + lastName,
-      email: email,
+      name: firstName.trim() + ' ' + lastName.trim(),
+      email: email.trim(),
       password: password
     }
-    // POST request API
-    axios.post("http://localhost:8000/auth/signup", data)
-    .then((res) => {
-      if(res.data.message === "success") {
-        // Successfully logs in
-        setUser(res.data.data);
+
+    setIsLoading(true);
+    try {
+      const response = await axiosInstance.post("/auth/signup", data);
+      if(response.data.message === "success") {
+        const { data: userData, token } = response.data;
+        console.log('Signup successful, setting user context:', userData);
+        await login(userData, token);
         navigate('/');
-      }else {
-        // Error from backend
-        alert(res.data.error);
+      } else {
+        setError(response.data.error || 'Signup failed');
       }
-    })
-    .catch(err => {
-      // Unexpected Error
-      alert("something went wrong");
-    })
+    } catch (err) {
+      console.error('Signup error:', err);
+      setError(err.response?.data?.error || 'Something went wrong during signup');
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   function togglePasswordView() {
@@ -76,6 +80,11 @@ export default function Signup() {
                 Signup
               </h3>
             </div>
+            {error && (
+              <div className="text-red-500 text-sm mb-4">
+                {error}
+              </div>
+            )}
             <div>
               <div className="relative flex items-center">
                 <input
@@ -156,8 +165,9 @@ export default function Signup() {
               <button
                 type="submit"
                 className="w-full shadow-xl py-2.5 px-5 text-sm font-semibold rounded-md text-white bg-secondary hover:bg-blue-700 focus:outline-none"
+                disabled={isLoading}
               >
-                Signup
+                {isLoading ? 'Signing up...' : 'Signup'}
               </button>
               <p className="text-gray-800 text-sm text-center mt-6">
                 Already have an account{" "}

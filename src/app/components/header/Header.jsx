@@ -43,11 +43,12 @@ const formatDate = (date) => {
 
 export default function Header() {
   const navigate = useNavigate();
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser, logout } = useContext(UserContext);
   
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
+  console.log("user", user);
 
   function toggleAccountDropdown() {
     setIsDropdownOpen(!isDropdownOpen);
@@ -78,8 +79,7 @@ export default function Header() {
   }, []);
 
   function handleLogout() {
-    setUser(null);
-    navigate('/login')
+    logout();
   }
 
   const { time, dayDate } = formatDate(currentDateTime);
@@ -127,22 +127,24 @@ export default function Header() {
 
           {
             user && (
-              <Tooltip content={user[0].name}>
+              <Tooltip content={user?.name} >
                 {
-                  user[0].profile_pic ? <button
+                  user?.profile_pic ? <button
                     id="profile-icon"
                     className="shadow-lg h-11 w-11 rounded-full"
+                    onClick={() => { navigate("/profile"); }}
                   >
                     <img
                       alt="profile"
-                      src={user[0].profile_pic}
+                      src={user?.profile_pic}
                       className="h-11 w-11 rounded-full"
                     />
                   </button> : <button
+                      onClick={() => { navigate("/profile"); }}
                     id="profile-icon"
                     className="hidden sm:flex h-11 w-11 flex-none items-center justify-center bg-greyaccent hover:bg-accent hover:text-white rounded-full shadow-md"
                   >
-                    {user[0].name.split(' ').map(n => n[0]).slice(0, 2).join('').toUpperCase()}
+                    {user?.name.split(' ').map(n => n[0]).slice(0, 2).join('').toUpperCase()}
                   </button>
                 }
               </Tooltip>

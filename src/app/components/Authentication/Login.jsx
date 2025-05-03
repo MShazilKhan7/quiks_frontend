@@ -3,42 +3,43 @@ import { Tooltip } from "@material-tailwind/react";
 import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
-import axios from "axios";
+import axiosInstance from "../../config/axios";
 
 export default function Login() {
   const navigate = useNavigate();
-  const { user, setUser } = useContext(UserContext);
+  const { login } = useContext(UserContext);
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  function login(e) {
+  async function handleLogin(e) {
     e.preventDefault();
+    setError('');
 
-    const user = {
-      email: email,
-      password: password
-    }
-
-    if (email.trim() == '' || password.trim() == '') {
-      alert("All field are required");
+    if (email.trim() === '' || password.trim() === '') {
+      setError("All fields are required");
       return;
     }
 
-    axios.post("http://localhost:8000/auth/login", user)
-      .then((response) => {
-        if (response.data.message === "success") {
-          // Successfully login
-          setUser(response.data.data);
-          navigate('/');
-        } else {
-          // Backend Error
-          alert(response.data.error);
-        }
-      })
-      .catch((error) => {
-        alert("Something went wrong");
-      })
+    setIsLoading(true);
+    try {
+      const response = await axiosInstance.post("/auth/login", { email, password });
+      if (response.data.message === "success") {
+        const { data: userData, token } = response.data;
+        console.log('Login successful, setting user context:', userData);
+        await login(userData, token);
+        navigate('/');
+      } else {
+        setError(response.data.error || 'Login failed');
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      setError(error.response?.data?.error || 'Something went wrong during login');
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -62,12 +63,17 @@ export default function Login() {
               alt="login-image"
             />
           </div>
-          <form className="md:max-w-md w-full mx-auto" onSubmit={login}>
+          <form className="md:max-w-md w-full mx-auto" onSubmit={handleLogin}>
             <div className="mb-12 flex justify-between">
               <h3 className="text-4xl font-extrabold text-secondary">
                 Login
               </h3>
             </div>
+            {error && (
+              <div className="text-red-500 text-sm mb-4">
+                {error}
+              </div>
+            )}
             <div>
               <div className="relative flex items-center">
                 <input
@@ -122,8 +128,9 @@ export default function Login() {
               <button
                 type="submit"
                 className="w-full shadow-xl py-2.5 px-5 text-sm font-semibold rounded-md text-white bg-secondary hover:bg-blue-700 focus:outline-none"
+                disabled={isLoading}
               >
-                Login
+                {isLoading ? 'Logging in...' : 'Login'}
               </button>
               <p className="text-gray-800 text-sm text-center mt-6">
                 Don't have an account{" "}

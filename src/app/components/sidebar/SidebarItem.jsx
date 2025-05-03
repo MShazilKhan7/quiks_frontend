@@ -4,15 +4,12 @@ import { useNavigate } from "react-router-dom";
 export default function SidebarItem({
   icon,
   title,
-  index,
-  setActiveIndex,
   isActive,
   path,
 }) {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    setActiveIndex(index);
     navigate(path);
   };
   return (

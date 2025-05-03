@@ -11,22 +11,22 @@ export const navigation = [
     icon: <GoHomeFill />,
   },
   {
-    path: "categories",
+    path: "/categories",
     title: "Categories",
     icon: <BiCategoryAlt />,
   },
   {
-    path: "library",
+    path: "/library",
     title: "Library",
     icon: < CiBookmark />,
   },
   {
-    path: "profile",
+    path: "/profile",
     title: "Profile",
     icon: <IoMdPerson />,
   },
   {
-    path: "settings",
+    path: "/settings",
     title: "Settings",
     icon: <CiSettings />,
   },

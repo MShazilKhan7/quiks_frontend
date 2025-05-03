@@ -2,17 +2,29 @@ import React from "react";
 import SidebarItem from "./SidebarItem";
 import { navigation } from "../../constants/navigationMenusConfig";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useLocation } from 'react-router-dom';
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 
 export default function Sidebar({ isOpen, onToggle }) {
-  const [activeIndex, setActiveIndex] = useState(0);
   const navigate = useNavigate();
+  const location = useLocation();
+  const { user } = useContext(UserContext);
+
+  // Filter out the profile link if user is not authenticated
+  const filteredNavigation = navigation.filter(menu => {
+    if (menu.path === "/profile") {
+      return user !== null; // Only show profile if user exists
+    }
+    return true; // Show all other menu items
+  });
+
   return (
     <nav
-      className={`h-full relative overflow-hidden z-10 rounded-r-[0.5rem] md:rounded-r-[0] transition-all duration-300 bg-[#DBE0EA] flex flex-col justify-center `}
+      className={`h-full relative overflow-hidden z-10 rounded-r-[0.5rem] md:rounded-r-[0] transition-all duration-300 bg-[#DBE0EA] flex flex-col justify-center`}
     >
       <div className="flex flex-col gap-4">
-        {navigation.map((menu, index) => {
+        {filteredNavigation.map((menu, index) => {
           return (
             <SidebarItem
               key={index}
@@ -20,9 +32,7 @@ export default function Sidebar({ isOpen, onToggle }) {
               icon={menu.icon}
               title={menu.title}
               path={menu.path}
-              index={index}
-              isActive={index === activeIndex}
-              setActiveIndex={setActiveIndex}
+              isActive={menu.path === location.pathname}
             />
           );
         })}
