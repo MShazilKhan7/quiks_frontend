@@ -25,8 +25,8 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
   SidebarFooter,
-
 } from "../../ui/sidebar";
+import { Link } from "react-router-dom";
 
 // This is sample data.
 const items = {
@@ -43,26 +43,26 @@ const items = {
       items: [
         {
           title: "Books",
-          url: "#",
+          url: "books",
         },
         {
           title: "Add a Book",
-          url: "#",
+          url: "books",
         },
       ],
     },
     {
       title: "Authors Management",
-      url: "#",
+      url: "authors",
       icon: Bot,
       items: [
         {
           title: "Authors",
-          url: "#",
+          url: "authors",
         },
         {
           title: "Add an Author",
-          url: "#",
+          url: "authors",
         },
       ],
     },
@@ -125,7 +125,9 @@ export function DbSidebar() {
       <SidebarFooter>
         <div className="flex justify-between p-4">
           <div className="flex items-center">
-            <button className="text-sm text-red-500 hover:underline">Logout</button>
+            <button className="text-sm text-red-500 hover:underline">
+              Logout
+            </button>
           </div>
         </div>
       </SidebarFooter>
@@ -172,9 +174,9 @@ function Navgation() {
                 {item.items?.map((subItem) => (
                   <SidebarMenuSubItem key={subItem.title}>
                     <SidebarMenuSubButton asChild>
-                      <a href={subItem.url}>
+                      <Link to={subItem.url}>
                         <span>{subItem.title}</span>
-                      </a>
+                      </Link>
                     </SidebarMenuSubButton>
                   </SidebarMenuSubItem>
                 ))}

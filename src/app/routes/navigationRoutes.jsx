@@ -6,6 +6,8 @@ import BookDetail from "../pages/bookDetail";
 import BookRead from "../pages/bookRead";
 import Library from "../pages/library";
 import DashboardLayout from "../pages/Dashboard";
+import Form from "../components/Dashboard/books/Form";
+import AuthorForm from "../components/Dashboard/authors/AuthorForm";
 
 export const navigationRoutes = [
   {
@@ -51,10 +53,14 @@ export const dashboardRoutes = [
     path: "dashboard/",
     element: <DashboardLayout />,
     children: [
-      // {
-      //   path: "/",
-      //   element: "",
-      // },
+      {
+        path: "books",
+        element: <Form />,
+      },
+      {
+        path: "authors",
+        element: <AuthorForm />,
+      },
     ],
   },
 ];
