@@ -26,7 +26,7 @@ import {
   SidebarMenuSubItem,
   SidebarFooter,
 } from "../../ui/sidebar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // This is sample data.
 const items = {
@@ -110,6 +110,8 @@ const items = {
 };
 
 export function DbSidebar() {
+  const navigate = useNavigate();
+  
   return (
     <Sidebar>
       <SidebarHeader>
@@ -125,7 +127,9 @@ export function DbSidebar() {
       <SidebarFooter>
         <div className="flex justify-between p-4">
           <div className="flex items-center">
-            <button className="text-sm text-red-500 hover:underline">
+            <button className="text-sm text-red-500 hover:underline" onClick={()=>{
+              navigate("/login")
+            }}>
               Logout
             </button>
           </div>

@@ -9,7 +9,7 @@ import { Outlet } from "react-router-dom";
 const DashboardLayout = () => {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <div className=" w-full flex">
+      <div className="w-full flex">
         <div className="sidebar">
           <SidebarProvider>
             <DbSidebar />
