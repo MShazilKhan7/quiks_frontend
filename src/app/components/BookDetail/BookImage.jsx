@@ -13,7 +13,7 @@ const BookImage = () => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <img
-        src="/image.png"
+        src="https://images.blinkist.io/images/books/663b4e4c195d960008e2c08f/1_1/470.jpg"
         className={`w-full h-full object-contain ${
           isHovered ? "opacity-50" : ""
         }`}
@@ -25,7 +25,7 @@ const BookImage = () => {
         transition={{ ease: "linear", duration: 0.4 }}
         className="absolute w-12 h-12 flex items-center justify-center bg-[#03314B] shadow-lg rounded-full cursor-pointer"
       >
-        <Link to={`${location.pathname}read/`}>
+        <Link to={`${location.pathname}read`}>
           <h2 className="text-xs text-white font-bold">Read</h2>
         </Link>
       </motion.div>

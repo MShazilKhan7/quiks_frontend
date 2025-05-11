@@ -6,12 +6,12 @@ export default function CategoryBookCard({book}) {
     <a href='#' className='bg-white rounded-md shadow-md hover:bg-gray-100'>
       <div className="flex justify-center mt-4">
         <img
-          src="https://images.blinkist.io/images/books/5f802b3b6cee07000646ad41/1_1/470.jpg"
+          src={book.image}
           alt="Super Human Book"
           className="object-contain flex-shrink-0 rounded w-32 h-32"
         />
       </div>
-      <div className="py-2 px-4">
+      <div className="py-2 px-4 mb-full">
         <h3 className="text-md font-semibold text-gray-800">{book.title}</h3>
         <p className="text-sm text-gray-600 mt-1">{book.author}</p>
         <p className="text-gray-500 mt-2 text-sm">

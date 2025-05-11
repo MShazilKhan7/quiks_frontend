@@ -26,7 +26,7 @@ const ProfileImage = ({ image, onDeleteImage, onImageChange }) => {
   };
 
   return (
-    <div className="bg-white max-h-[320px] shadow-md rounded-md p-5">
+    <div className="rounded-3xl max-h-[320px] shadow-md p-5">
       <div className="relative flex justify-center">
         <img
           className="object-cover w-40 h-40 rounded-full ring-2 ring-indigo-300"

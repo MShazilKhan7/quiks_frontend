@@ -21,10 +21,10 @@ export default CategoryDetail;
 const books = [
   {
     id: 1,
-    title: "Book 1",
-    author: "Author 1",
-    image: "https://via.placeholder.com/150",
-    description: "Description 1",
+    title: "How I Built This",
+    author: "Guy Raz",
+    image: "https://images.blinkist.io/images/books/5f802b3b6cee07000646ad41/1_1/470.jpg",
+    description: "The Unexpected Paths to Success from the World's Most Inspiring Entrepreneurs",
     duration: "24 min",
     price: 100,
     rating: 4.5,
@@ -34,16 +34,15 @@ const books = [
   },
   {
     id: 2,
-    title: "Book 2",
-    author: "Author 2",
-    image: "https://via.placeholder.com/150",
-    description: "Description 2",
-    duration: "24 min",
+    title: "The Humor Habit",
+    author: "Paul Osincup",
+    image: "https://images.blinkist.io/images/books/66598ac581aa110007c1ca1e/1_1/470.jpg",
+    description: "Rewire Your Brain to Stress Less, Laugh More, enjoy life, and Achieve More'er",
+    duration: "18 min",
     price: 200,
     rating: 4.5,
     reviews: 100,
     isbn: "1234567890",
     publishedDate: "2021-01-01",
   },
-  
 ];

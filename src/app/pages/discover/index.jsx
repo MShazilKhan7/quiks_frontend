@@ -19,7 +19,7 @@ const Discover = () => {
             <PrimaryCards />
           </div>
           {/* Audio Player */}
-          <div className="lg:max-w-lg sm:w-full flex flex-auto order-1 lg:order-2 md:h-auto">
+          <div className="lg:max-w-lg sm:w-full flex flex-auto order-1 lg:order-2 md:h-auto md:mb-20">
             <AudioPlayer />
           </div>
         </div>
