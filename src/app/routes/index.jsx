@@ -28,6 +28,7 @@ const Router = () => {
           />
         ))}
 
+      </Route>
         {dashboardRoutes.map((route, index) => (
           <Route key={index} path={route.path} element={route.element}>
             {route.children &&
@@ -41,7 +42,6 @@ const Router = () => {
               ))}
           </Route>
         ))}
-      </Route>
     </Routes>
   );
 };
