@@ -4,9 +4,39 @@ import { Tooltip } from "@material-tailwind/react";
 import { formatTime } from "../../functions/functions";
 
 const chapters = [
-  "Lorem, ipsum dolor sit amet consectetur adipisicing elit...",
-  "Chapter 02",
-  "Chapter 03",
+  `If you’ve ever read any Greek mythology or the Bible or watched Star
+Wars, you have experience with the “hero’s journey,” the concept—
+identified by the author and philosopher Joseph Campbell—that most
+great epic stories follow a similar narrative arc: a hero has a crazy
+idea; people doubt her; she leaves the village to pursue her vision,
+faces untold obstacles, falls into an abyss, barely escapes death, but
+manages to come out the other side with whatever she was looking
+for and continues on her journey to an eventual triumphant return.
+What was even more surprising, to me at least, was that I was at all
+interested. In high school and college, I used to think that “business”
+was a dirty word.
+`,
+  `Watching my parents endure what entrepreneurship demanded of
+them, I could not think of any career less suited to my temperament
+and my interests than talking about businesses all day, let alone
+starting one. That’s why I went into journalism, then into radio, and
+eventually into hosting at NPR. And yet, here I am. I have somehow
+managed to create or co-create five podcasts that, together, generate
+millions of dollars in revenue and are heard by 19 million people a
+month.  But over the course of my time doing deep-dive interviews with
+hundreds of business founders and CEOs for my shows, I’ve come to
+understand that, for the most part, they are just like you and me. `,
+  `Which is to say, they’re human. They all have sleepless nights and
+midnight terrors. Most of them, at some point, feel like imposters.
+They are not natural superheroes; they are all Clark Kents. The only
+difference between them and you, at this moment, is that when
+opportunity presented itself, they went into the phone booth and put
+on the cape. They took the leap. That’s basically it.
+This book is organized to help those people—people like you and
+me, like Stacy Brown—succeed. It is the product of in-depth
+interviews with hundreds of the most successful and inspiring
+entrepreneurs from across the business landscape—from the food
+industry to consumer packaged goods to the tech world, and more. `,
 ];
 const audios = [
   "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
@@ -96,7 +126,7 @@ const Book = ({ title, author, image }) => (
   </div>
 );
 
-const BookText = ({ text }) => <p className="text-gray-800 mb-4 text-[0.9rem] flex-grow">{text}</p>;
+const BookText = ({ text }) => <p className="text-gray-800 mb-4 text-[0.9rem] flex-grow max-h-[300px] min-h-[200px] overflow-auto">{text}</p>;
 
 const PlayerBottom = ({ currentTime, totalTime, progressBarRef, handleProgressClick, handleBackward, handleForward, togglePlayPause, isPlaying, currentChapter }) => (
   <div className="player-bottom mt-auto">
@@ -122,7 +152,7 @@ const TimeDisplay = ({ time }) => <small>{time}</small>;
 const AudioControls = ({ handleBackward, handleForward, togglePlayPause, isPlaying, currentChapter }) => (
   <div className="controls flex justify-center items-center">
     <PlayerButton icon={<FaStepBackward />} onClick={handleBackward} disabled={currentChapter === 0} tooltip="Previous" size="40px" />
-    <PlayerButton icon={isPlaying ? <FaPause /> : <FaPlay />} onClick={togglePlayPause} tooltip={isPlaying ? "Pause" : "Play"} size="50px" />
+    <PlayerButton icon={isPlaying ? <FaPause /> : <FaPlay />} onClick={togglePlayPause} tooltip={isPlaying ? "Pause" : "Play"} size="40px" />
     <PlayerButton icon={<FaStepForward />} onClick={handleForward} disabled={currentChapter === chapters.length - 1} tooltip="Next" size="40px" />
   </div>
 );

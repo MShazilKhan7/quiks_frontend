@@ -27,9 +27,9 @@ export default BookDetail;
 
 // Data From Backend
 const book = {
-  "title": "How to Talk to Anyone",
-  "author": "Leil Lowndes",
-  "subtitle": "92 Little Tricks for Big Success in Relationships",
+  "title": "Co-Intelligence",
+  "author": "Ethan Mollick",
+  "subtitle": "Living and Working with AI",
   "rating": "4.3 (2341 ratings)",
   "duration": "32 min",
   "keyIdeas": "15 Key Ideas",
@@ -37,8 +37,8 @@ const book = {
   "format": "Audio & Text",
   "categories": [
     { "name": "Personal Development", "icon": "IoMdStarOutline" },
-    { "name": "Health", "icon": "GiHealing" }
+    { "name": "Artificial Intelligence", "icon": "GiArtificialIntelligence" }
   ],
-  "about": "AI Needs You (2024), explores the transformative power of Artificial Intelligence and the urgent need for public engagement in shaping its future...",
-  "authorInfo": "Verity Harding is a prominent figure in the field of AI policy and ethics, recognized as one of TIME's 100 Most Influential People in AI..."
+  "about": "Co-Intelligence (2024) explores the benefits of partnering with generative, language-based artificial intelligence (AI) in education, the workplace, and any area of life you wish to excel in. By harnessing the potential of new AI technology, and better understanding its limitations, you can use AI to significantly enhance your performance and potential.",
+  "authorInfo": "Ethan Mollick is an associate professor who teaches innovation and entrepreneurship at the Wharton School of the University of Pennsylvania. A startups expert, Mollick has penned several renowned management papers, as well as authoring the book The Unicorn’s Shadow: Combating the Dangerous Myths that Hold Back Startups."
 }

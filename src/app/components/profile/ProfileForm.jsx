@@ -41,7 +41,7 @@ const ProfileForm = () => {
   };
 
   return (
-    <div className="bg-white p-5 px-8 shadow-md rounded-md">
+    <div className="p-5 px-8 shadow-md rounded-2xl ">
       <form onSubmit={handleSubmit} className="text-[#202142]">
         {error && (
           <div className="text-red-500 text-sm mb-4">
